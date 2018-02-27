@@ -158,7 +158,7 @@ func getLastCheckinWithRetries(maxRetries int, id string) (time.Time, error) {
 	return time.Time{}, fmt.Errorf("checkin max retry of %v reached, skipping\n", maxRetries)
 }
 
-func PublisherLambdaHandler(s Session) {
+func (s *Session) PublisherLambdaHandler() {
 	if err := s.RunPublisher(); err != nil {
 		log.Println(err)
 	}

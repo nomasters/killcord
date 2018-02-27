@@ -12,7 +12,7 @@ func main() {
 	var opts killcord.ProjectOptions
 	session := killcord.New()
 
-	otps.Payload.Secret = os.Getenv("KILLCORD_PAYLOAD_SECRET")
+	opts.Payload.Secret = os.Getenv("KILLCORD_PAYLOAD_SECRET")
 	opts.Payload.RPCURL = os.Getenv("KILLCORD_PAYLOAD_RPCURL")
 	opts.Contract.ID = os.Getenv("KILLCORD_CONTRACT_ID")
 	opts.Contract.RPCURL = os.Getenv("KILLCORD_CONTRACT_RPCURL")
