@@ -22,7 +22,7 @@
 `killcord` leverages: 
 
 - [ipfs](https://ipfs.io/) for decentralized, immutable, peer-to-peer storage of the encrypted payload
-- [an ethereum smart contract](https://solidity.readthedocs.io/en/develop/introduction-to-smart-contracts.html) for immutable and censorship resistant application state.
+- [an ethereum smart contract](https://solidity.readthedocs.io/en/develop/introduction-to-smart-contracts.html) for trustless and censorship resistant application state.
 - a hidden `publisher` written in `go` that communicates with the `ethereum` smart contract and publishes the `ipfs` stored encrypted payload key in the event that the `killcord` owner stops checking in.
 - a client `killcord cli` written in `go` meant to run on a personally controlled system that bootstraps the entire `killcord` system and allows for checkins.
 
