@@ -44,7 +44,7 @@ To install killcord, you can download precompiled binaries from latest release f
 If you have `go` installed, you can install the killcord cli tool by running:
 
 ```
-go get github.com/nomasters/killcord/killcord
+go install github.com/nomasters/killcord/killcord
 ```
 
 
