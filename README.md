@@ -32,6 +32,16 @@
 
 ### killcord client (CLI)
 
+To install killcord, you can download precompiled binaries from latest release from the releases tab on github. Once downloaded, move `killcord` to your path, such as `/usr/local/bin/`.
+
+
+If you have `go` installed, you can install the killcord cli tool by running:
+
+```
+go get github.com/nomasters/killcord/killcord
+```
+
+
 `killcord` is a command-line tool meant to run from a personally trusted system. It is the primary interface to either `own` or `watch` a `killcord project`.
 
 
