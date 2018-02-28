@@ -4,11 +4,12 @@
 
 ## v0.0.1
 
-[![circleci][1]][2]
+[![circleci][1]][2] [![Go Report Card][3]][4]
 
 [1]: https://circleci.com/gh/nomasters/killcord.svg?style=shield&circle-token=46ac657a268fef44dc132ef2241291c51811edd2
 [2]: https://circleci.com/gh/nomasters/killcord
-
+[3]: https://goreportcard.com/badge/github.com/nomasters/killcord
+[4]: https://goreportcard.com/report/github.com/nomasters/killcord
 
 **WARNING** This software is in early _alpha_. Please do not rely on this with your life. Though great care has been taken to ensure that this code is well structured and a straight-forward as possible, it has not undergone proper peer-review and could have both minor and major bugs that undermine the integrity of the system.
 
