@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestingSetEthereumRPCPath(t *testing.T) {
+func TestSetEthereumRPCPath(t *testing.T) {
 	s := New()
 	s.setEthereumRPCPath()
 	if ethereumRPCPath != defaultETHRPCPDev {

@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestingSetPayloadRPCPath(t *testing.T) {
+func TestSetPayloadRPCPath(t *testing.T) {
 	s := New()
 	s.setPayloadRPCPath()
 	if payloadRPCPath != defaultpayloadRPCPath {
@@ -21,15 +21,3 @@ func TestingSetPayloadRPCPath(t *testing.T) {
 		t.Fail()
 	}
 }
-
-// func (s *Session) setPayloadRPCPath() {
-// 	if s.Options.Payload.RPCURL != "" {
-// 		payloadRPCPath = s.Options.Payload.RPCURL
-// 		return
-// 	}
-// 	if s.Config.Payload.RPCURL != "" {
-// 		payloadRPCPath = s.Config.Payload.RPCURL
-// 		return
-// 	}
-// 	payloadRPCPath = defaultpayloadRPCPath
-// }

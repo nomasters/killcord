@@ -64,6 +64,10 @@ func (s *Session) setEthereumRPCPath() {
 	ethereumRPCPath = defaultETHRPCPDev
 }
 
+// Configures the ethereum accounts used by killcord and adds
+// the settings to the primary config. This includes account
+// generation, password creation, and keystore creation.
+
 func (s *Session) ConfigEthereum() error {
 	ks := newKeyStore()
 	if err := s.Config.Contract.Owner.New(ks); err != nil {
