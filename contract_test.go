@@ -6,7 +6,7 @@ import (
 
 func TestSetEthereumRPCPath(t *testing.T) {
 	s := New()
-	s.setEthereumRPCPath()
+	s.Init()
 	if ethereumRPCPath != defaultETHRPCPDev {
 		t.Fail()
 	}
@@ -24,6 +24,7 @@ func TestSetEthereumRPCPath(t *testing.T) {
 		t.Fail()
 	}
 	s.Options.Contract.RPCURL = "t2"
+	s.setEthereumRPCPath()
 	if ethereumRPCPath != "t2" {
 		t.Fail()
 	}
