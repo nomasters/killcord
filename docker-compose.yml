@@ -1,0 +1,10 @@
+version: "3"
+services:
+  killcord-linux-builder:
+    build: ./
+    environment:
+      - GITHUB_TOKEN
+      - AWS_SECRET_ACCESS_KEY=${KILLCORD_AWS_SECRET_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${KILLCORD_AWS_ACCESS_KEY_ID}
+      - AWS_DEFAULT_REGION=us-east-1
+    command: ./scripts/build-release.sh
