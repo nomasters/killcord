@@ -72,7 +72,7 @@ has enough currency provided to fund the the deployment of a contract.`,
 		session := killcord.New()
 		session.Options = opts
 		session.Config = config
-
+		session.Init()
 		if err := session.DeployContract(); err != nil {
 			fmt.Println(err)
 			os.Exit(1)

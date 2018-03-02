@@ -46,7 +46,6 @@ func weiToETH(i *big.Int) float64 {
 
 // Gracefully resolve Ethereum RPC path by waterfalling through
 // Options > Project > Defaults
-
 func (s *Session) setEthereumRPCPath() {
 	if s.Options.Contract.RPCURL != "" {
 		ethereumRPCPath = s.Options.Contract.RPCURL
@@ -67,7 +66,6 @@ func (s *Session) setEthereumRPCPath() {
 // Configures the ethereum accounts used by killcord and adds
 // the settings to the primary config. This includes account
 // generation, password creation, and keystore creation.
-
 func (s *Session) ConfigEthereum() error {
 	ks := newKeyStore()
 	if err := s.Config.Contract.Owner.New(ks); err != nil {
@@ -88,8 +86,8 @@ Next, you'll need to add a little bit of ETH to both accounts to move forward.
 
 You should add a minimum of:
 
-- 0.01  ETH to your owner account
-- 0.005 ETH to your publisher account
+- 0.03 ETH to your owner account
+- 0.01 ETH to your publisher account
 
 your owner account address is:     0x%v
 your publisher account address is: 0x%v
@@ -304,7 +302,8 @@ func (s *Session) DeployContract() error {
 		return err
 	}
 	// TODO: this was set arbitrarily, should dive into this more
-	auth.GasLimit = big.NewInt(2200000)
+	// auth.GasLimit = big.NewInt(50000)
+	// auth.GasPrice = big.NewInt(10)
 	publisher := common.HexToAddress("0x" + s.Config.Contract.Publisher.Address)
 	address, tx, _, err := contract.DeployKillCord(auth, conn, publisher)
 	if err != nil {

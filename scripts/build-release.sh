@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-set -e
-
 # the idea hear is to generate prebuilt binaries of kilcord to work on
 # the killcord website. This will expand over time (I see rasberry pi 
 # in the near future)
 #
 # the format for adding this to 
-# killcord.io/downloads/killcord/VERSION/PLATFORM/ARCHITECTURE/killcord
+# killcord.io/killcord/0.0.1-alpha/killcord_0.0.1-alpha_macos_64bit.zip
 
-PROJ="killcord"
+# exit on error
+set -e
+
+# setup boiler plate
+PROJECT="killcord"
 BUCKET="s3://killcord.io"
 CODE_PLATFORM="null"
 CODE_ARCH="null"
@@ -27,21 +29,36 @@ case "$(uname -s)" in
 		exit 1
 esac
 
-# get supported architectures
 case "$(uname -m)" in
-    x86_64)     
-		CODE_ARCH="64-bit"
-		;;
-    *)
-		echo "unsupported architecture for this tool, exiting"
-		exit 1
+	x86_64) CODE_ARCH="amd64" ;;
+	x86) CODE_ARCH="386" ;;
+	i686) CODE_ARCH="386" ;;
+	i386) CODE_ARCH="386" ;;
+	aarch64) CODE_ARCH="arm64" ;;
+	armv5*) CODE_ARCH="arm5" ;;
+	armv6*) CODE_ARCH="arm6" ;;
+	armv7*) CODE_ARCH="arm7" ;;
+	*) echo "unsupported architecture for this tool, exiting" && exit 1
 esac
 
-cd $PROJ
+# go to the cmd directory
+cd $PROJECT
+
+# build it
 echo "building killcord for $CODE_PLATFORM $CODE_ARCH"
 go build
 
-KILLCORD_VERSION="$(./killcord version)"
+# grab the version
+PROJECT_VERSION="$(./killcord version)"
 
-aws s3 cp $PROJ $BUCKET/downloads/killcord/$KILLCORD_VERSION/$CODE_PLATFORM/$CODE_ARCH/$PROJ --acl public-read
-rm killcord
+# name it
+ZIP_NAME=$PROJECT\_$PROJECT_VERSION\_$CODE_PLATFORM\_$CODE_ARCH.zip
+
+# zip it
+zip $ZIP_NAME $PROJECT
+
+# upload it
+aws s3 cp $ZIP_NAME $BUCKET/$PROJECT/$PROJECT_VERSION/$ZIP_NAME --acl public-read
+
+# clean it
+rm $PROJECT $ZIP_NAME

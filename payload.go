@@ -75,7 +75,11 @@ func (s *Session) DeployPayload() error {
 		return fmt.Errorf("payload %v already deployed, skipping", s.Config.Payload.ID)
 	}
 	sh := shell.NewShell(payloadRPCPath)
-	mhash, err := sh.AddDir(payloadEncryptedPath)
+	f, err := os.Open(filepath.Join(payloadEncryptedPath, defaultOutputKilName))
+	if err != nil {
+		return err
+	}
+	mhash, err := sh.Add(f)
 	if err != nil {
 		return err
 	}
@@ -89,13 +93,15 @@ func (s *Session) DeployPayload() error {
 
 // Gets the payload from the storage endpoint and stores it locally
 // in the Encrypted payload folder
-
 func (s *Session) GetPayload() error {
 	sh := shell.NewShell(payloadRPCPath)
 	if err := sh.Get(s.Config.Payload.ID, payloadEncryptedPath); err != nil {
 		return err
 	}
 	s.Config.Payload.Status = "synced"
+	if err := os.Rename(filepath.Join(payloadEncryptedPath, s.Config.Payload.ID), filepath.Join(payloadEncryptedPath, defaultOutputKilName)); err != nil {
+		return err
+	}
 	return nil
 }
 
