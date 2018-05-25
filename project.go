@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	Version                 = "0.0.1-alpha"
+	Version                 = "0.0.2-alpha"
 	defaultContractProvider = "ethereum"
 	defaultPayloadProvider  = "ipfs"
 )
@@ -39,15 +39,6 @@ type ProjectOptions struct {
 
 type StatusOptions struct {
 	ViewAll bool
-}
-
-type PayloadOptions struct {
-	SourcePath      string
-	DestinationPath string
-	RPCURL          string
-	Provider        string
-	Secret          string
-	ID              string
 }
 
 type ContractOptions struct {
@@ -356,7 +347,7 @@ func setAbsPath() {
 	ProjectPath = dir
 }
 
-func generateKey() string {
+func GenerateKey() string {
 	key := make([]byte, 32)
 	rand.Read(key)
 	return hex.EncodeToString(key)

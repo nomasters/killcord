@@ -112,7 +112,7 @@ Place your files in the `payload/source` folder in your project. If `killcord` r
 $ killcord encrypt
 ```
 
-This command encrypts your data, saves it into the `payload/encrypted` directory and saves the encryption key to the `killcord.toml` file.
+This command encrypts your data, saves it to `payload/output.kil` and saves the encryption key to the `killcord.toml` file.
 
 to test that they payload will decrypt properly, use: 
 
@@ -120,7 +120,7 @@ to test that they payload will decrypt properly, use:
 $ killcord decrypt
 ```
 
-This will decrypt a payload found in the `payload-encrypted` directory and save it to the `payload-decrypted` directory. This should match the contents of the `payload-source` directory.
+This will decrypt a payload found at `payload/output.kil` and saves it to `payload/output.zip`. Once unzipped, this should match the contents of the `payload-source` directory.
 
 Now that we have an encrypted payload, we need to deploy it to `ipfs`. run:
 
