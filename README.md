@@ -52,7 +52,7 @@ go install github.com/nomasters/killcord/killcord
 `killcord` is a command-line tool meant to run from a personally trusted system. It is the primary interface to either `own` or `watch` a `killcord project`.
 
 
-***killcord projects*** allow an `owner` to upload an encrypted payload to IPFS with a globally unique `hash` that is tied to a smart contract on ethereum. `killcord` creates unique `ipfs` and `ethereum` accounts for each project (one for the contract owner and one for the publisher), and once a small amount of `ETH` has been added to the newly generated account, it deploys a smart contract closely tied to the `owner` of the account. Only the account owner is allowed to make writes to all functions on the smart contract, the publisher is only allowed to my writes on the `publishedKey` function.
+***killcord projects*** allow an `owner` to upload an encrypted payload to IPFS with a globally unique `hash` that is tied to a smart contract on ethereum. `killcord` creates unique `ipfs` and `ethereum` accounts for each project (one for the contract owner and one for the publisher), and once a small amount of `ETH` has been added to the newly generated account, it deploys a smart contract closely tied to the `owner` of the account. Only the account owner is allowed to make writes to all functions on the smart contract, the publisher is only allowed to make writes on the `publishedKey` function.
 
 The owner can interact with the project, once deployed with:
 
