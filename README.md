@@ -11,7 +11,7 @@
 [3]: https://goreportcard.com/badge/github.com/nomasters/killcord
 [4]: https://goreportcard.com/report/github.com/nomasters/killcord
 
-**WARNING** This software is in early _alpha_. Please do not rely on this with your life. Though great care has been taken to ensure that this code is well structured and a straight-forward as possible, it has not undergone proper peer-review and could have both minor and major bugs that undermine the integrity of the system.
+**WARNING** This software is in early _alpha_. Please do not rely on this with your life. Though great care has been taken to ensure that this code is as well structured and straight-forward as possible, it has not undergone proper peer-review and could have both minor and major bugs that undermine the integrity of the system.
 
 
 ## Summary
