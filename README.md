@@ -224,7 +224,7 @@ Currently, this is the least mature part of killcord and requires a bit of manua
 
 The publisher requires a subset of values from the `killcord.toml` to work. 
 
-```
+```toml
 devMode = true             # optional, defaults to false
 
 [payload]
