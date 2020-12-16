@@ -20,7 +20,7 @@
 
 ![killcord relational diagram](images/relational-diagram.png)
 
-`killcord` leverages: 
+`killcord` leverages:
 
 - [ipfs](https://ipfs.io/) for decentralized, immutable, peer-to-peer storage of the encrypted payload
 - [an ethereum smart contract](https://solidity.readthedocs.io/en/develop/introduction-to-smart-contracts.html) for trustless and censorship resistant application state.

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # the idea hear is to generate prebuilt binaries of kilcord to work on
-# the killcord website. This will expand over time (I see rasberry pi 
+# the killcord website. This will expand over time (I see rasberry pi
 # in the near future)
 #
-# the format for adding this to 
+# the format for adding this to
 # killcord.io/killcord/0.0.1-alpha/killcord_0.0.1-alpha_macos_64bit.zip
 
 # exit on error
@@ -18,10 +18,10 @@ CODE_ARCH="null"
 
 # get platform name
 case "$(uname -s)" in
-    Linux*)     
+    Linux*)
 		CODE_PLATFORM="linux"
 		;;
-    Darwin*)    
+    Darwin*)
 		CODE_PLATFORM="macos"
     	;;
     *)

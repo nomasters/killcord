@@ -4,7 +4,7 @@ set -e
 CONTRACT_PATH='./contract'
 
 ## Generate abi and bin files from contract (force overwrite)
-solc --overwrite --abi --bin $CONTRACT_PATH/killcord.sol -o $CONTRACT_PATH 
+solc --overwrite --abi --bin $CONTRACT_PATH/killcord.sol -o $CONTRACT_PATH
 
 ## generate contract library in go for use with killcord contract
 abigen \
