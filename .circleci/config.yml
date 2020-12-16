@@ -6,7 +6,6 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.15
-    working_directory: /app
     steps:
       - checkout
       # specify any bash command here prefixed with `run: `
