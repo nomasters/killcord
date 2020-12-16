@@ -21,8 +21,8 @@ import (
 )
 
 const (
-	defaultETHRPCPDev  = "https://ropsten.infura.io/tDr4BM10GNjusw3XnkrT"
-	defaultETHRPCDProd = "https://mainnet.infura.io/tDr4BM10GNjusw3XnkrT"
+	defaultETHRPCPDev  = "https://ropsten.infura.io/v3/31eba034ccd74fc8ab6ac9ba0e24da2f"
+	defaultETHRPCDProd = "https://mainnet.infura.io/v3/31eba034ccd74fc8ab6ac9ba0e24da2f"
 )
 
 var (
@@ -63,7 +63,7 @@ func (s *Session) setEthereumRPCPath() {
 	ethereumRPCPath = defaultETHRPCPDev
 }
 
-// Configures the ethereum accounts used by killcord and adds
+// ConfigEthereum configures the ethereum accounts used by killcord and adds
 // the settings to the primary config. This includes account
 // generation, password creation, and keystore creation.
 func (s *Session) ConfigEthereum() error {
@@ -81,7 +81,7 @@ func (s *Session) ConfigEthereum() error {
 
 	fmt.Printf(`
 
-Congrats! You've successfully initialized your ethereum owner and publisher accounts. 
+Congrats! You've successfully initialized your ethereum owner and publisher accounts.
 Next, you'll need to add a little bit of ETH to both accounts to move forward.
 
 You should add a minimum of:
@@ -105,6 +105,7 @@ func newKeyStore() *keystore.KeyStore {
 	return keystore.NewKeyStore(fullKeyStorePath, keystore.StandardScryptN, keystore.StandardScryptP)
 }
 
+// New makes a account
 func (a *AccountConfig) New(ks *keystore.KeyStore) error {
 	pw := generateKey()
 	newAcc, err := ks.NewAccount(pw)
@@ -163,6 +164,7 @@ func newContractCallerSession(contractID string) (*contract.KillCordSession, err
 	}, nil
 }
 
+// GetLastCheckIn returns a timestamp or error from last checkin
 func GetLastCheckIn(contractID string) (time.Time, error) {
 	session, err := newContractCallerSession(contractID)
 	if err != nil {

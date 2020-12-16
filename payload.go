@@ -11,10 +11,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ipfs/go-ipfs-api"
-	"github.com/mholt/archiver"
+	"github.com/cheggaaa/pb/v3"
+	shell "github.com/ipfs/go-ipfs-api"
+	archiver "github.com/mholt/archiver/v3"
 	"golang.org/x/crypto/nacl/secretbox"
-	"gopkg.in/cheggaaa/pb.v1"
 )
 
 const (
@@ -45,6 +45,7 @@ func init() {
 	payloadDecryptPath = filepath.Join(strings.Split(decryptPrefix, "/")...)
 }
 
+// Chunk is a byte slice used for chunking data
 type Chunk []byte
 
 // getShellURL waterfalls settings and returns the RPC url in priority
@@ -64,7 +65,6 @@ func (s *Session) setPayloadRPCPath() {
 
 // DeployPayload takes the contents from the /payload/encrypted and adds it to
 // the storage endpoint
-
 func (s *Session) DeployPayload() error {
 	// check that encrypted payload exists, exit if it doesn't
 	if _, err := os.Stat(filepath.Join(payloadEncryptedPath, defaultOutputKilName)); os.IsNotExist(err) {
@@ -91,7 +91,7 @@ func (s *Session) DeployPayload() error {
 	return nil
 }
 
-// Gets the payload from the storage endpoint and stores it locally
+// GetPayload Gets the payload from the storage endpoint and stores it locally
 // in the Encrypted payload folder
 func (s *Session) GetPayload() error {
 	sh := shell.NewShell(payloadRPCPath)
@@ -105,6 +105,7 @@ func (s *Session) GetPayload() error {
 	return nil
 }
 
+// Encrypt encrypts the payload
 func (s *Session) Encrypt() error {
 	var key [32]byte
 	os.RemoveAll(payloadTempPath)
@@ -129,6 +130,7 @@ func (s *Session) Encrypt() error {
 	return nil
 }
 
+// Decrypt descrypts the payload and returns an error
 func (s *Session) Decrypt() error {
 	var key [32]byte
 	secret, err := hex.DecodeString(s.Config.Payload.Secret)
@@ -161,7 +163,8 @@ func getFileSize(path string) (int64, error) {
 func zipSource() error {
 	fmt.Println("-- compressing payload (this could take a while) --")
 	zip := filepath.Join(payloadTempPath, defaultOutputZipName)
-	if err := archiver.Zip.Make(zip, []string{payloadSourcePath}); err != nil {
+	z := archiver.NewZip()
+	if err := z.Archive([]string{payloadSourcePath}, zip); err != nil {
 		return err
 	}
 	return nil
@@ -170,7 +173,8 @@ func zipSource() error {
 func unzipSource() error {
 	fmt.Println("-- uncompressing payload (this could take a while) --")
 	zip := filepath.Join(payloadTempPath, defaultOutputZipName)
-	if err := archiver.Zip.Open(zip, payloadTempPath); err != nil {
+	z := archiver.NewZip()
+	if err := z.Unarchive(zip, payloadTempPath); err != nil {
 		return err
 	}
 	return nil
@@ -247,7 +251,7 @@ func encrypter(r, w chan Chunk, k [32]byte, totalSize int64) {
 	}
 	e := encrypt(block, k)
 	w <- e
-	bar.Set(count)
+	bar.Set(nil, count)
 	bar.Finish()
 	close(w)
 }
@@ -279,7 +283,7 @@ func decrypter(r, w chan Chunk, k [32]byte, totalSize int64) {
 	}
 	e := decrypt(block, k)
 	w <- e
-	bar.Set(count)
+	bar.Set(nil, count)
 	bar.Finish()
 	close(w)
 }

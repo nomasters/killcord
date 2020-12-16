@@ -11,7 +11,7 @@ import (
 var contractCmd = &cobra.Command{
 	Use:   "contract",
 	Short: "Manage a contract",
-	Long: `More options will become available, but currently this comamand only 
+	Long: `More options will become available, but currently this command only
 accepts the --kill flag which is used to kill an existing contract`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if cfgFileExists == false {
