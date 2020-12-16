@@ -7,5 +7,5 @@ PROJ=killcord
 ## was in private development
 
 cd $PROJ
-go build
+vgo build
 mv $PROJ $HOME/bin/$PROJ

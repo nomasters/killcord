@@ -1,0 +1,40 @@
+
+# Gopkg.toml example
+#
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
+# for detailed Gopkg.toml documentation.
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[override]]
+#  name = "github.com/x/y"
+#  version = "2.4.0"
+
+
+#ignored = ["github.com/multiformats/go-multiaddr-net", "github.com/libp2p/go-libp2p-peer"]
+
+[[override]]
+  name = "github.com/ethereum/go-ethereum"
+  revision = "f7ca03ae875c7c78191bf38f6ce1cc4bbe5361c6"
+
+[[override]]
+  name = "github.com/ipfs/go-ipfs-api"
+  revision = "15ef20c520dc85de9257c7aef8c27931dc7d1a60"
+
+# [[override]]
+#   name = "github.com/multiformats/go-multiaddr"
+#   revision = "6040dff26de27e20b248b08041fdb65e6ba45b58"
+
+[[override]]
+  name = "github.com/BurntSushi/toml"
+  revision = "a368813c5e648fee92e5f6c30e3944ff9d5e8895"
