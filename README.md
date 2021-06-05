@@ -114,7 +114,7 @@ $ killcord encrypt
 
 This command encrypts your data, saves it into the `payload/encrypted` directory and saves the encryption key to the `killcord.toml` file.
 
-to test that they payload will decrypt properly, use: 
+to test that the payload will decrypt properly, use: 
 
 ```
 $ killcord decrypt
