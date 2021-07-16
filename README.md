@@ -8,7 +8,7 @@
 
 [1]: https://circleci.com/gh/nomasters/killcord.svg?style=shield&circle-token=46ac657a268fef44dc132ef2241291c51811edd2
 [2]: https://circleci.com/gh/nomasters/killcord
-[3]: https://goreportcard.com/badge/github.com/nomasters/killcord
+[3]: https://goreportcard.com/badge/github.com/nomasters/killcord?cache=false
 [4]: https://goreportcard.com/report/github.com/nomasters/killcord
 
 **WARNING** This software is in early _alpha_. Please do not rely on this with your life. Though great care has been taken to ensure that this code is as well structured and straight-forward as possible, it has not undergone proper peer-review and could have both minor and major bugs that undermine the integrity of the system.
