@@ -47,14 +47,14 @@ func (s *Session) RunPublisher() error {
 		return err
 	}
 	fmt.Printf("Last Checkin:\t\t%s\n", checkin)
-	if publishThresholdReached(checkin, s.Config.Publisher.PublishThreshold) == true {
+	if publishThresholdReached(checkin, s.Config.Publisher.PublishThreshold) {
 		fmt.Println("publish threshold breached, publishing secret key")
 		if err := s.PublishKey(); err != nil {
 			return err
 		}
 		return nil
 	}
-	if warningThresholdReached(checkin, s.Config.Publisher.WarningThreshold) == true {
+	if warningThresholdReached(checkin, s.Config.Publisher.WarningThreshold) {
 		// log warning, add additional features later
 		fmt.Println("warning: checkin has broken the warning threshold")
 		return nil
