@@ -5,7 +5,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.15
+      - image: cimg/go:1.18
     steps:
       - checkout
       # specify any bash command here prefixed with `run: `
