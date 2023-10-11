@@ -1,3 +1,14 @@
+# ARCHIVED PROJECT, NO FUTURE UPDATES
+I appreciate you checking out my old project. A few years ago I was interested in exploring claims made by IPFS and ETH, and this was a toy project I built to experiment with that. I do not plan to update or maintain this project, and I'm leaving it up for historical reasons. Feel free to learn from this repo, but I will not be maintaining this or updating this anylong and I'll be marking it as ARCHIVE.
+
+
+
+# Original project README below
+
+
+
+
+
 ![killcord logo](images/logo.png)
 
 # killcord
